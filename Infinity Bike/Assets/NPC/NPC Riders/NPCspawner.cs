@@ -16,15 +16,13 @@ public class NPCspawner : MonoBehaviour
 	[Range(0,1f)]
 	public float spawnProb = 0f;
 	public float spawnCooldown= 1f;
-    private bool isReadyForNextSpawn = true;    
-
-	// Use this for initialization
-	void Start () 
-	{   
+    private bool isReadyForNextSpawn = true;
+    // Use this for initialization
+    void Start () 
+	{
         GenerateList();
     }   
 
-    [ContextMenu("GenerateList")]
     public void GenerateList()
     {
 
