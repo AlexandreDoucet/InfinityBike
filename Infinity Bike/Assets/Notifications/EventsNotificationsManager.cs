@@ -5,7 +5,8 @@ using UnityEngine;
 public class EventsNotificationsManager : MonoBehaviour {
     public Mode mode;
     public TrainingEvent[] trainingEvents;
-    public NotificationsManager notificationsManager; 
+    public NotificationsManager notificationsManager;
+    public IntensityBarManager iBM; 
 
     private int eventNum;  
 	// Use this for initialization
@@ -19,7 +20,10 @@ public class EventsNotificationsManager : MonoBehaviour {
         {
             if (Time.time > trainingEvents[eventNum].GetEventTime())
             {
+
                 notificationsManager.PushNotification(trainingEvents[eventNum].eventMessages,trainingEvents[eventNum].persistance);
+
+                iBM.SetTargetPower(trainingEvents[eventNum].targetIntensity);
 
                 eventNum++;
             }
@@ -43,7 +47,8 @@ public class TrainingEvent
     public string eventMessages; 
     public float eventMinute;
     public float eventSecond;
-    public float persistance; 
+    public float persistance;
+    public int targetIntensity; 
 
     public float GetEventTime()
     {
